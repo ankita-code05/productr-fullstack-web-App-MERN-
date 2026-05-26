@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────────────── */
+.login-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* LEFT SIDE */
+.left-section {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0eef8;
+  padding: 16px;
+  position: relative;
+}
+
+.left-image {
+  width: 100%;
+  height: 96%;
+  object-fit: contain;
+  border-radius: 20px;
+  display: block;
+}
+/* RIGHT SIDE */
+.right-section {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+}
+
+/* ─── LOGIN BOX ──────────────────────────────────────────── */
+.login-box {
+  width: 320px;
+}
+
+.login-box h2 {
+  font-size: 18px;
+  color: #111c8f;
+  margin-bottom: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.login-box label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.login-box input {
+  width: 100%;
+  height: 38px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 0 12px;
+  margin-bottom: 16px;
+  outline: none;
+  font-size: 13px;
+}
+
+.login-box input:focus {
+  border-color: #111c8f;
+}
+
+.login-box button {
+  width: 100%;
+  height: 38px;
+  border: none;
+  border-radius: 4px;
+  background: #111c8f;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ─── SIGNUP BOX ─────────────────────────────────────────── */
+.signup-box {
+  margin-top: 120px;
+  border: 1px solid #e4e4e4;
+  border-radius: 6px;
+  text-align: center;
+  padding: 16px;
+}
+
+.signup-box p {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.signup-box span {
+  color: #111c8f;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ─── OTP SECTION ────────────────────────────────────────── */
+.login-box.otp-box-container {
+  width: 320px;
+}
+
+.login-box.otp-box-container h2 {
+  font-size: 18px;
+  color: #111c8f;
+  margin-bottom: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.login-box.otp-box-container label {
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: #444;
+  display: block;
+}
+
+/* OTP boxes — compact like Figma */
+.otp-input-group {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0 14px;
+}
+
+.otp-box {
+  width: 34px;
+  height: 28px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  outline: none;
+  background: #fff;
+  color: #111;
+  transition: border-color 0.2s ease;
+}
+
+.otp-box:focus {
+  border-color: #111c8f;
+}
+
+/* OTP submit button */
+.otp-submit-btn {
+  width: 100%;
+  height: 34px;
+  border: none;
+  border-radius: 4px;
+  background: #111c8f;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+/* Resend text */
+.resend-text {
+  font-size: 10px;
+  margin-top: 12px;
+  color: #999;
+  text-align: center;
+}
+
+.resend-link {
+  color: #111c8f;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.resend-disabled {
+  color: #999;
+}
+
+/* Error text */
+.error-text {
+  color: #e53935;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media screen and (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .left-section {
+    width: 100%;
+    height: 42vh;
+  }
+
+  .right-section {
+    width: 100%;
+    height: 58vh;
+    padding: 25px;
+    justify-content: center;
+  }
+
+  .login-box,
+  .login-box.otp-box-container {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .login-box h2,
+  .login-box.otp-box-container h2 {
+    font-size: 17px;
+    text-align: center;
+  }
+
+  .signup-box {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .left-section {
+    height: 35vh;
+  }
+
+  .right-section {
+    height: 65vh;
+    padding: 16px;
+  }
+
+  .login-box h2,
+  .login-box.otp-box-container h2 {
+    font-size: 16px;
+  }
+
+  .otp-box {
+    width: 30px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .signup-box {
+    margin-top: 40px;
+  }
+}
