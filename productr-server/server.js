@@ -16,7 +16,13 @@ const app = express();
 
 connectDB();
 
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://productr-fullstack-web-app-mern.vercel.app'
+  ],
+  credentials: true
+}));
 app.use(express.json({ limit: "10mb" }));
 
 app.use("/api/auth", authRoutes);
