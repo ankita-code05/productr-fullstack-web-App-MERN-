@@ -1,22 +1,11 @@
-// productr-server/services/emailService.js
-
-const nodemailer = require("nodemailer");
-
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const { Resend } = require('resend');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendOtpEmail = async (email, otp) => {
-  await transporter.sendMail({
-    from: `"Productr" <${process.env.EMAIL_USER}>`,
+  await resend.emails.send({
+    from: 'Productr <onboarding@resend.dev>',
     to: email,
-    subject: "Your Productr Login OTP",
+    subject: 'Your Productr Login OTP',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 400px; margin: auto;">
         <h2 style="color: #1a1aff;">Login to Productr</h2>
