@@ -1,63 +1,188 @@
 # Productr — Full Stack Web App
 
-A full-stack product management platform built with React, Node.js, Express, and MongoDB.
+A full-stack product management platform built with **React.js**, **Node.js**, **Express.js**, and **MongoDB**, developed as part of the Orufy Technologies Full Stack Developer Assignment.
 
-## Tech Stack
-- **Frontend:** React.js, Context API
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB Atlas
-- **Auth:** JWT + Firebase Phone OTP
-- **Image Upload:** Cloudinary
+## 🔗 Live Demo
 
-## Folder Structure
-productr/
-├── productr-client/    # React frontend
-└── productr-server/    # Node.js backend
+- **Frontend:** [https://productr-fullstack-web-app-mern.vercel.app](https://productr-fullstack-web-app-mern.vercel.app)
+- **Backend API:** [https://productr-fullstack-web-app-mern.onrender.com/api](https://productr-fullstack-web-app-mern.onrender.com/api)
 
-## Backend Setup
+---
+
+## 📁 Folder Structure
+
+```
+Productr/
+├── productr-client/       # React.js Frontend
+│   ├── public/
+│   └── src/
+│       ├── components/    # Reusable UI components
+│       ├── config/        # Firebase configuration
+│       ├── context/       # React context (auth, products)
+│       ├── hooks/         # Custom hooks
+│       ├── pages/         # Page components
+│       ├── services/      # API & auth service calls
+│       ├── styles/        # CSS files
+│       └── utils/         # Utility functions
+│
+└── productr-server/       # Node.js + Express Backend
+    ├── config/            # DB & Cloudinary config
+    ├── controllers/       # Route controllers
+    ├── middleware/        # Auth & error middleware
+    ├── models/            # Mongoose models
+    ├── routes/            # Express routes
+    └── services/          # Email service (Resend)
+```
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React.js, Axios, React Router |
+| Backend | Node.js, Express.js |
+| Database | MongoDB (Mongoose) |
+| Auth | Firebase (Phone OTP) + Custom Email OTP |
+| Email | Resend API |
+| Image Upload | Cloudinary |
+| Deployment | Vercel (frontend), Render (backend) |
+
+---
+
+## 🚀 How to Run Locally
+
+### Prerequisites
+- Node.js v18+
+- MongoDB URI (Atlas or local)
+- Firebase project
+- Resend API key
+- Cloudinary account
+
+---
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ankita-code05/productr-fullstack-web-App-MERN-.git
+cd productr-fullstack-web-App-MERN-
+```
+
+---
+
+### 2. Run the Backend
+
+```bash
 cd productr-server
 npm install
+```
 
-Create .env file with:
+Create a `.env` file in `productr-server/`:
+
+```env
 PORT=5000
-MONGO_URI=your_mongodb_uri
+MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
-EMAIL_USER=your_gmail
-EMAIL_PASS=your_gmail_app_password
-FAST2SMS_API_KEY=your_key
+
+# Resend (Email OTP)
+RESEND_API_KEY=your_resend_api_key
+
+# Cloudinary
 CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_key
-CLOUDINARY_API_SECRET=your_secret
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+```
 
-Run: npm run dev
+Start the server:
 
-## Frontend Setup
+```bash
+npm run dev
+```
+
+Backend runs on: `http://localhost:5000`
+
+---
+
+### 3. Run the Frontend
+
+```bash
 cd productr-client
 npm install
+```
 
-Create .env file with:
+Create a `.env` file in `productr-client/`:
+
+```env
 REACT_APP_API_BASE_URL=http://localhost:5000/api
-REACT_APP_FIREBASE_API_KEY=your_key
-REACT_APP_FIREBASE_AUTH_DOMAIN=your_domain
-REACT_APP_FIREBASE_PROJECT_ID=your_id
-REACT_APP_FIREBASE_STORAGE_BUCKET=your_bucket
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_id
-REACT_APP_FIREBASE_APP_ID=your_id
 
-Run: npm start
+# Firebase
+REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your_project.firebasestorage.app
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+REACT_APP_FIREBASE_APP_ID=your_app_id
+```
 
-## API Endpoints
+Start the app:
 
-### Auth
-POST /api/auth/request-otp
-POST /api/auth/verify-otp
-POST /api/auth/resend-otp
-POST /api/auth/phone-login
+```bash
+npm start
+```
 
-### Products
-GET    /api/products
-POST   /api/products
-PUT    /api/products/:id
-DELETE /api/products/:id
-PATCH  /api/products/:id/publish
-POST   /api/products/upload-images
+Frontend runs on: `http://localhost:3000`
+
+---
+
+## 🌐 Deployment
+
+### Frontend — Vercel
+- Root directory: `productr-client`
+- Build command: `npm run build`
+- Output directory: `build`
+- Environment variables: same as `.env` above (with production backend URL)
+
+### Backend — Render
+- Root directory: `productr-server`
+- Build command: `npm install`
+- Start command: `npm start`
+- Environment variables: same as `.env` above
+
+---
+
+## 📌 API Endpoints
+
+### Auth Routes `/api/auth`
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/request-otp` | Send OTP to email |
+| POST | `/verify-otp` | Verify email OTP |
+| POST | `/resend-otp` | Resend OTP to email |
+| POST | `/phone-login` | Login via phone number |
+
+### Product Routes `/api/products`
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/` | Get all products |
+| POST | `/` | Create a product |
+| PUT | `/:id` | Update a product |
+| DELETE | `/:id` | Delete a product |
+
+---
+
+## ✅ Features
+
+- 🔐 Dual authentication — Email OTP & Phone OTP (Firebase)
+- 📦 Full CRUD for product management
+- 🖼️ Image upload via Cloudinary
+- 📱 Responsive design for desktop & mobile
+- ⚡ Loading states and error handling throughout
+- 🌍 Fully deployed and accessible online
+
+---
+
+## 👩‍💻 Developed By
+
+**Ankita Tiwari**  
+Full Stack Developer  
+GitHub: [@ankita-code05](https://github.com/ankita-code05)
